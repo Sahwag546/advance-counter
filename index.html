@@ -10,7 +10,6 @@
     <section class="align-items-center d-flex justify-content-center min-vh-100">
          <h1 class="heading">Advance Counter app</h1>
     <div class="container">
-     
       <div class="box text-center">
         <p id="count" class="number">0</p>
         <button id="addnumber" class="btn-1" >Add One</button>
@@ -21,5 +20,14 @@
     </div>
   </section>
 </body>
+<script>
+    const count = document.querySelector("#count");
+    const addnumber = document.querySelector("#addnumber");
+    const savedata = document.querySelector("#savedata");
+    const para = document.querySelector("#para");
+addnumber.addEventListener("click" , function () {
+ count.innerHTML = ++count.innerHTML 
+});
 
+</script>
 </html>

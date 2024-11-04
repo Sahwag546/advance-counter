@@ -14,12 +14,6 @@ section{
     padding: 0;
     box-sizing: border-box;
 }
-.container{
-    display: flex;
-      justify-content: center;
-      margin: 0 auto;
-      align-items: center;
-}
 .number{
 font-family: Inter;
     font-size: 36px;
@@ -67,6 +61,7 @@ font-family: Inter;
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .value {
