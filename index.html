@@ -11,23 +11,84 @@
          <h1 class="heading">Advance Counter app</h1>
     <div class="container">
       <div class="box text-center">
-        <p id="count" class="number">0</p>
-        <button id="addnumber" class="btn-1" >Add One</button>
-        <button id="savebtn" onclick="myFunction()" class="btn-2" >Save</button>
+        <p  id="current-value" class="number">0</p>
+        <button  class="btn-1" id="add-one">Add One</button>
+        <button id="save" onclick="myfunction() " class="btn-2">Save</button>
         <p class="value">Previous values</p>
-        <p id="para" class="num">0</p>
+        <p id="previous-values" class="num">0</p>
       </div>
     </div>
   </section>
+    <section class="flex justify-center items-center min-h-screen ">
+        <div class="mx-auto w-4/5 flex gap-[50px]">
+            <div>
+            <form action="">
+                <label for="text" class="emailid">Enter Your ID :</label>
+                <div class="flex">
+                  <div class="">
+                <input type="email" id="inputtext" placeholder="Your ID" value=""
+                    class="input-box">
+                    </div>
+                    <div class="">
+                <button type="button" id="btn" class="subbtn">Submit</button>
+                </div>
+                </div>
+            </form>
+            <p class="save-input">Save Input = <span id="para"></span></p>
+</div>
+</section>
 </body>
 <script>
-    const count = document.querySelector("#count");
-    const addnumber = document.querySelector("#addnumber");
-    const savedata = document.querySelector("#savedata");
-    const para = document.querySelector("#para");
-addnumber.addEventListener("click" , function () {
- count.innerHTML = ++count.innerHTML 
+
+const currentValueElement = document.getElementById('current-value');
+const addOneButton = document.getElementById('add-one');
+const saveButton = document.getElementById('save');
+const previousValuesElement = document.getElementById('previous-values');
+
+
+let currentValue = 0;
+const previousValues = [];
+
+
+function updateCurrentValue() {
+    currentValueElement.textContent = currentValue;
+}
+
+// current value update 
+addOneButton.addEventListener('click', () => {
+    currentValue++;
+    updateCurrentValue();
 });
+
+// current value push to previous value 
+saveButton.addEventListener('click', () => {
+   if (currentValue > 0) {
+    previousValues.push(currentValue);
+    previousValuesElement.textContent = previousValues.join(", ")
+   }
+  //  modal type = curent value must be greater than 0 
+   else{
+    alert("curent value must be greater than 0")
+   }
+});
+
+// input save 
+    const inputtext = document.getElementById("inputtext")
+    const button = document.getElementById("btn")
+    const form = document.querySelector("form")
+    const inputData = document.querySelector("#para")
+    form.addEventListener("submit", function (e) {
+        e.preventDefault()
+    })
+    button.addEventListener("click", function () {
+        inputData.innerHTML = inputtext.value
+        inputtext.value = ""
+    })
+
+function updatePreviousValues() {
+    previousValuesElement.textContent = previousValues.join(', ');
+}
+
 
 </script>
 </html>
