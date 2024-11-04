@@ -126,4 +126,7 @@ font-family: Inter;
 .save-input{
     font-size: 25px;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
 }

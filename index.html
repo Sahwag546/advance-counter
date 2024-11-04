@@ -20,21 +20,13 @@
     </div>
   </section>
     <section class="flex justify-center items-center min-h-screen ">
-        <div class="mx-auto w-4/5 flex gap-[50px]">
-            <div>
-            <form action="">
-                <label for="text" class="emailid">Enter Your ID :</label>
+        <div class="container">
                 <div class="flex">
-                  <div class="">
-                <input type="email" id="inputtext" placeholder="Your ID" value=""
-                    class="input-box">
-                    </div>
-                    <div class="">
-                <button type="button" id="btn" class="subbtn">Submit</button>
-                </div>
-                </div>
-            </form>
-            <p class="save-input">Save Input = <span id="para"></span></p>
+              <input class="input-box" type="text"  id="textInput" placeholder="Enter your text">
+            <button class="subbtn" onclick="saveText()">Submit</button>
+            </div>
+              <div class="save-input" id="displayedText"></div>
+
 </div>
 </section>
 </body>
@@ -70,19 +62,48 @@ saveButton.addEventListener('click', () => {
    }
 });
 
-// input save 
-    const inputtext = document.getElementById("inputtext")
-    const button = document.getElementById("btn")
-    const form = document.querySelector("form")
-    const inputData = document.querySelector("#para")
-    form.addEventListener("submit", function (e) {
-        e.preventDefault()
-    })
-    button.addEventListener("click", function () {
-        inputData.innerHTML = inputtext.value
-        inputtext.value = ""
-    })
+// // input save 
+//     const inputtext = document.getElementById("inputtext")
+//     const button = document.getElementById("btn")
+//     const form = document.querySelector("form")
+//     const inputData = document.querySelector("#para")
+//     form.addEventListener("submit", function (e) {
+//         e.preventDefault()
+//     })
+//     button.addEventListener("click", function () {
+//         inputData.innerHTML = inputtext.value
+//         inputtext.value = ""
+//     })
 
+// input save
+let savedTexts = [];
+
+function saveText() {
+    const currentText = document.getElementById("textInput").value;
+
+    // Add the current text to the saved texts array
+    savedTexts.push(currentText);
+
+    // Display all saved texts with delete buttons
+    const displayText = savedTexts.map((text, index) => `
+                <span>${text} <button onclick="deleteText(${index})">X</button></span>
+            `).join(", ");
+    document.getElementById("displayedText").innerHTML = displayText;
+
+    // Clear the input field
+    document.getElementById("textInput").value = "";
+}
+
+function deleteText(index) {
+    // Remove the text from the saved texts array
+    savedTexts.splice(index, 1);
+
+    // Update the displayed text
+    const displayText = savedTexts.map((text, index) => `
+                <span>${text} <button onclick="deleteText(${index})">X</button></span>
+            `).join(" ");
+    document.getElementById("displayedText").innerHTML = displayText;
+}
 
 </script>
 </html>
