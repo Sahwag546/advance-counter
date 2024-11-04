@@ -62,13 +62,11 @@ addOneButton.addEventListener('click', () => {
 
 // current value push to previous value 
 saveButton.addEventListener('click', () => {
-   if (currentValue > 0) {
+   if (currentValue !== 0) {
     previousValues.push(currentValue);
-    previousValuesElement.textContent = previousValues.join(", ")
-   }
-  //  modal type = curent value must be greater than 0 
-   else{
-    alert("curent value must be greater than 0")
+    previousValuesElement.textContent = previousValues.join(", ");
+    currentValue = 0;
+   document.getElementById("currentValue").textContent = currentValue;
    }
 });
 
@@ -84,10 +82,6 @@ saveButton.addEventListener('click', () => {
         inputData.innerHTML = inputtext.value
         inputtext.value = ""
     })
-
-function updatePreviousValues() {
-    previousValuesElement.textContent = previousValues.join(', ');
-}
 
 
 </script>
